@@ -2,605 +2,259 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nguyen Dinh Tu – Data &amp; Economics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nguyen Dinh Tu — Economics &amp; Data Analytics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pastel:#b0cbd0;
-  --paper:#ffffff;
-  --ink:#000000;
-  --mute:#5d6567;
-  --line:rgba(0,0,0,.16);
-  --on-photo:#ffffff;
+  --paper:#faf9f6; --ink:#181b1d; --mute:#5c6570; --line:#e1e0da;
+  --navy:#1f3350; --card:#ffffff;
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --pastel:#2c4044;
-    --paper:#101314;
-    --ink:#f4f7f7;
-    --mute:#9aa6a8;
-    --line:rgba(255,255,255,.18);
-    --on-photo:#b0cbd0;
+    --paper:#14171a; --ink:#eef0ee; --mute:#98a1a8; --line:#2b2f31;
+    --navy:#9fbadb; --card:#1a1e21;
   }
 }
 :root[data-theme="dark"]{
-  --pastel:#2c4044;
-  --paper:#101314;
-  --ink:#f4f7f7;
-  --mute:#9aa6a8;
-  --line:rgba(255,255,255,.18);
-  --on-photo:#b0cbd0;
+  --paper:#14171a; --ink:#eef0ee; --mute:#98a1a8; --line:#2b2f31;
+  --navy:#9fbadb; --card:#1a1e21;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  line-height:1.5;
+  background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
 }
-a{color:inherit}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-ul{list-style:none}
-:focus-visible{outline:2px solid currentColor;outline-offset:3px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.eye{width:1.25em;height:1.25em;display:block}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:500;letter-spacing:-.01em}
+a{color:inherit;text-decoration-color:var(--line)}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:0 clamp(20px,4vw,32px)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.92em}
 
-/* ───────── HERO ───────── */
-.hero{background:var(--pastel);overflow:hidden}
-.stage{
-  --sheet-l:6.7; --sheet-t:6;  --sheet-w:45.6; --sheet-h:44;
-  --ph-l:14.4;   --ph-t:15.5;  --ph-w:20.8;    --ph-h:26.7;
-  --fs:11.2; --h1-x:31.4; --h1-y:9.7; --h2-x:3.4; --h2-y:20.4;
-  --dk-l:58; --dk-t:20.5;
-  container-type:inline-size;
-  position:relative;
-  max-width:1500px;
-  margin:0 auto;
-  aspect-ratio:2/1;
+header.site{
+  position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);
 }
-.sheet{
-  position:absolute;z-index:1;background:var(--paper);
-  left:calc(var(--sheet-l)*1cqw);top:calc(var(--sheet-t)*1cqw);
-  width:calc(var(--sheet-w)*1cqw);height:calc(var(--sheet-h)*1cqw);
-}
-.snav{
-  position:absolute;z-index:2;
-  left:calc(var(--sheet-l)*1cqw);width:calc(var(--sheet-w)*1cqw);
-  top:calc((var(--sheet-t) + 1.7)*1cqw);
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0 calc(3.5*1cqw) 0 calc(4.9*1cqw);
-  font-size:max(.92cqw,9px);
-}
-.snav .logo{font-size:max(1.4cqw,12px);display:flex}
-.snav ul{display:flex;gap:calc(2.4*1cqw)}
-.snav a{text-decoration:none}
-.snav a:hover{text-decoration:underline;text-underline-offset:4px}
+.navrow{display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,4vw,32px);max-width:860px;margin:0 auto;gap:12px}
+.navrow .name{font-family:"Source Serif 4",serif;font-size:1.05rem}
+.navrow nav ul{list-style:none;display:flex;gap:clamp(14px,3vw,28px);font-size:.88rem;color:var(--mute)}
+.navrow nav a{text-decoration:none}
+.navrow nav a:hover{color:var(--ink)}
 
-.hl{
-  position:absolute;inset:0;z-index:2;pointer-events:none;
-  color:var(--ink);
-  font-size:calc(var(--fs)*1cqw);
-  line-height:1;letter-spacing:-.055em;font-weight:500;
-}
-.hl span{position:absolute;white-space:nowrap;animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
-.hl .a{left:calc(var(--h1-x)*1cqw);top:calc(var(--h1-y)*1cqw)}
-.hl .b{left:calc(var(--h2-x)*1cqw);top:calc(var(--h2-y)*1cqw);animation-delay:.12s}
-@keyframes rise{from{opacity:0;transform:translateY(.18em)}to{opacity:1;transform:none}}
+.hero{padding:clamp(56px,9vw,96px) 0 clamp(40px,6vw,64px)}
+.hero h1{font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.1;max-width:14em}
+.hero .role{color:var(--mute);font-size:1.05rem;margin-top:.9rem;max-width:36em}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:1.6rem;font-size:.92rem}
+.contact-row a{text-decoration:underline;text-underline-offset:3px}
 
-.ph{
-  position:absolute;z-index:3;overflow:hidden;background:#1b1e20;
-  left:calc(var(--ph-l)*1cqw);top:calc(var(--ph-t)*1cqw);
-  width:calc(var(--ph-w)*1cqw);height:calc(var(--ph-h)*1cqw);
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:1px;margin-top:clamp(36px,5vw,52px);border:1px solid var(--line);background:var(--line);
 }
-.ph svg,.ph img.pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ph img.pic{filter:grayscale(1) contrast(1.05)}
-.ph img.pic[hidden]{display:none}
-.ph .hl{
-  inset:auto;left:calc(var(--ph-l)*-1cqw);top:calc(var(--ph-t)*-1cqw);
-  width:100cqw;height:100cqw;color:var(--on-photo);
-}
-.addphoto{
-  position:absolute;left:.7cqw;bottom:.7cqw;z-index:2;
-  font-size:max(.8cqw,9px);font-weight:600;
-  padding:.35em .9em;border-radius:99px;
-  background:rgba(0,0,0,.6);color:#fff;cursor:pointer;
-}
-.addphoto:hover{background:rgba(0,0,0,.85)}
-.addphoto:focus-within{outline:2px solid #fff;outline-offset:2px}
+.stats div{background:var(--paper);padding:1.1rem 1.2rem}
+.stats .n{font-family:"Source Serif 4",serif;font-size:1.7rem;color:var(--navy)}
+.stats .l{font-size:.82rem;color:var(--mute);margin-top:.25rem}
 
-.bio{
-  position:absolute;z-index:2;
-  left:calc(36.2*1cqw);top:calc(33.5*1cqw);width:calc(13*1cqw);
-  font-size:max(1.15cqw,9px);line-height:1.42;font-weight:500;
-}
-.slinks{
-  position:absolute;z-index:2;
-  left:calc(11.4*1cqw);top:calc(45.4*1cqw);width:calc(35.9*1cqw);
-  display:flex;justify-content:space-between;align-items:baseline;
-  font-size:max(.95cqw,9px);font-weight:500;
-}
-.slinks div{display:flex;gap:calc(1.8*1cqw)}
-.slinks a{text-decoration:none}
-.slinks a:hover{text-decoration:underline;text-underline-offset:4px}
-.slinks .mail{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+section{padding:clamp(40px,6vw,64px) 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:.82rem;color:var(--mute);margin-bottom:.4rem}
+section > h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin-bottom:clamp(24px,3.4vw,36px)}
 
-.brand{
-  position:absolute;z-index:1;left:calc(60*1cqw);top:calc(6.4*1cqw);
-  display:flex;align-items:center;gap:.35em;
-  font-size:calc(3.3*1cqw);font-weight:700;letter-spacing:-.05em;line-height:1;
-}
-.brand .eye{width:.85em;height:.85em}
-.tag{
-  position:absolute;z-index:1;left:calc(60*1cqw);top:calc(11.8*1cqw);
-  font-size:calc(1.55*1cqw);line-height:1.5;font-weight:500;
-}
+.entry{padding:1.4rem 0}
+.entry + .entry{border-top:1px solid var(--line)}
+.entry-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px}
+.entry-head h3{font-size:1.12rem}
+.entry-head .org{color:var(--mute);font-weight:400;font-family:"Inter",sans-serif;font-size:.95rem}
+.entry-head time{font-size:.85rem;color:var(--mute);white-space:nowrap}
+.entry ul{list-style:none;margin-top:.7rem;display:grid;gap:.55rem}
+.entry li{position:relative;padding-left:1.05rem;font-size:.96rem}
+.entry li::before{content:"";position:absolute;left:0;top:.68em;width:5px;height:1px;background:var(--mute)}
+.tools{margin-top:.7rem;font-size:.84rem;color:var(--navy)}
+.repo{display:inline-block;margin-top:.6rem;font-size:.88rem;text-decoration:underline;text-underline-offset:3px}
 
-.dark{
-  position:absolute;z-index:1;cursor:pointer;
-  left:calc(var(--dk-l)*1cqw);top:calc(var(--dk-t)*1cqw);
-  width:100vw;height:calc(50cqw - var(--dk-t)*1cqw);
-  background:#000;color:#fff;
-}
-.dark .dtop{position:absolute;left:calc(2.5*1cqw);top:calc(2*1cqw);display:flex;align-items:center}
-.dark .dnav{display:flex;gap:calc(6.5*1cqw);margin-left:calc(18.5*1cqw);font-size:max(.95cqw,9px);white-space:nowrap}
-.dark .dhead{
-  position:absolute;left:calc(6.3*1cqw);top:calc(11.4*1cqw);
-  font-size:calc(6.1*1cqw);line-height:1;letter-spacing:-.045em;font-weight:500;white-space:nowrap;
-}
-.dark .dfilters{
-  position:absolute;left:calc(6*1cqw);top:calc(25.8*1cqw);
-  display:flex;gap:calc(1.6*1cqw);font-size:max(.95cqw,9px);
-}
-.av{
-  position:relative;width:calc(2.6*1cqw);height:calc(2.6*1cqw);min-width:26px;min-height:26px;
-  border-radius:50%;overflow:hidden;background:#33383a;border:2px solid #fff;
-  display:grid;place-items:center;color:#fff;font-size:max(.85cqw,9px);font-weight:700;flex:none;
-}
-.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
-.av img[hidden]{display:none}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(28px,4vw,48px)}
+.grid2 h3{font-size:.95rem;font-weight:600;font-family:"Inter",sans-serif;margin-bottom:.7rem;color:var(--mute)}
+.grid2 p,.grid2 li{font-size:.95rem}
+.grid2 ul{list-style:none;display:grid;gap:.35rem}
 
-/* ───────── WORK ───────── */
-.work{
-  background:#000;color:#fff;
-  padding:clamp(24px,3.5vw,48px) clamp(20px,6vw,96px) clamp(64px,10vw,140px);
-  scroll-margin-top:0;
-}
-.wbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.wbar .av{width:34px;height:34px}
-.wbar nav ul{display:flex;gap:clamp(16px,4vw,56px);font-size:.9rem}
-.wbar nav a{text-decoration:none}
-.wbar nav a:hover{text-decoration:underline;text-underline-offset:4px}
-.big{
-  font-size:clamp(3rem,9.5vw,9rem);font-weight:500;letter-spacing:-.05em;line-height:1;
-  margin:clamp(48px,9vw,120px) 0 clamp(28px,4vw,56px);
-}
-.filters{display:flex;flex-wrap:wrap;gap:8px clamp(18px,2.4vw,32px);margin-bottom:clamp(24px,3vw,40px)}
-.filters button{color:rgba(255,255,255,.55);font-size:1rem;padding:4px 0}
-.filters button:hover{color:#fff}
-.filters button[aria-pressed="true"]{color:#fff;text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:1px}
-.rows{border-bottom:1px solid rgba(255,255,255,.18)}
-.row{border-top:1px solid rgba(255,255,255,.18)}
-.row[hidden]{display:none}
-.rh{
-  width:100%;text-align:left;
-  display:grid;grid-template-columns:12rem 1fr 15rem 2rem;gap:0 1.25rem;align-items:baseline;
-  padding:1.6rem 0;
-}
-.when,.kind{font-size:.9rem;color:rgba(255,255,255,.6)}
-.what{font-size:clamp(1.2rem,2.3vw,1.9rem);font-weight:500;letter-spacing:-.025em;line-height:1.2}
-.rh:hover .what{color:var(--pastel)}
-.plus{position:relative;width:14px;height:14px;justify-self:end;align-self:center}
-.plus::before,.plus::after{content:"";position:absolute;left:0;top:6px;width:14px;height:1.5px;background:currentColor;transition:transform .3s}
-.plus::after{transform:rotate(90deg)}
-.rh[aria-expanded="true"] .plus::after{transform:rotate(0)}
-.rb{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .35s ease,visibility 0s .35s}
-.row.open .rb{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .35s ease,visibility 0s}
-.rb > div{overflow:hidden;min-height:0}
-.rb-in{padding:0 0 2rem 13.25rem;max-width:calc(13.25rem + 46rem)}
-.rb ul{display:grid;gap:.7rem;color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.6}
-.rb li{position:relative;padding-left:1.1rem}
-.rb li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:1px;background:currentColor}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.4rem}
-.chips span{border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:.15rem .8rem;font-size:.8rem}
-.rb .ext{display:inline-block;margin-top:1.2rem;font-size:.9rem}
+footer.site{padding:clamp(48px,7vw,80px) 0 clamp(28px,4vw,40px);border-top:1px solid var(--line)}
+footer.site h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.reach{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:1.2rem;font-size:.95rem}
+.reach a{text-decoration:underline;text-underline-offset:3px}
+.foot-bottom{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(40px,6vw,64px);font-size:.82rem;color:var(--mute);
+  padding-bottom:env(safe-area-inset-bottom,0px);}
+.foot-bottom a{text-decoration:none}
 
-/* ───────── ABOUT ───────── */
-.about{background:var(--paper);color:var(--ink);padding:clamp(72px,11vw,160px) clamp(20px,6vw,96px)}
-.about .lead{
-  font-size:clamp(1.6rem,3.6vw,3.2rem);font-weight:500;letter-spacing:-.035em;line-height:1.15;
-  max-width:22em;
-}
-.facts{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:clamp(32px,4vw,56px) clamp(24px,3vw,48px);
-  margin-top:clamp(56px,8vw,112px);
-}
-.facts h3{font-size:.95rem;font-weight:700;margin-bottom:.8rem;padding-top:.9rem;border-top:1px solid var(--ink)}
-.facts p,.facts li{font-size:.95rem;line-height:1.6}
-.facts li+li{margin-top:.35rem}
-.facts .sub{color:var(--mute)}
-
-/* ───────── CONTACT ───────── */
-.contact{background:var(--pastel);padding:clamp(72px,10vw,150px) clamp(20px,6vw,96px) clamp(28px,4vw,48px)}
-.contact h2{font-size:clamp(3rem,9.5vw,9rem);font-weight:500;letter-spacing:-.05em;line-height:1}
-.contact .mailbig{
-  display:inline-block;margin-top:clamp(20px,3vw,40px);
-  font-size:clamp(1.15rem,3.6vw,3.2rem);font-weight:500;letter-spacing:-.03em;
-  text-decoration:underline;text-underline-offset:.14em;text-decoration-thickness:1px;
-  overflow-wrap:anywhere;
-}
-.reach{display:flex;flex-wrap:wrap;gap:12px clamp(20px,4vw,56px);margin-top:clamp(28px,4vw,48px);font-size:1rem}
-.reach a{text-decoration:none}
-.reach a:hover{text-decoration:underline;text-underline-offset:4px}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(64px,9vw,128px);font-size:.85rem}
-.foot a{display:flex;align-items:center;gap:.5em;text-decoration:none;font-weight:600}
-
-/* ───────── MOBILE ───────── */
-@media (max-width:720px){
-  .stage{
-    --sheet-l:4; --sheet-t:4; --sheet-w:92; --sheet-h:116;
-    --ph-l:34; --ph-t:46; --ph-w:54; --ph-h:44;
-    --fs:25; --h1-x:26; --h1-y:16; --h2-x:8; --h2-y:38;
-    aspect-ratio:100/124;
-  }
-  .brand,.tag,.dark{display:none}
-  .snav{top:calc(6.5*1cqw);padding:0 calc(4*1cqw) 0 calc(5*1cqw);font-size:3.1cqw}
-  .snav .logo{font-size:5.5cqw}
-  .snav ul{gap:3cqw}
-  .bio{left:calc(8*1cqw);top:calc(93*1cqw);width:calc(84*1cqw);font-size:3.5cqw}
-  .slinks{left:calc(8*1cqw);top:calc(111*1cqw);width:calc(84*1cqw);font-size:3.2cqw}
-  .addphoto{font-size:9px}
-  .rh{grid-template-columns:1fr 2rem;grid-template-areas:"when plus" "what plus" "kind plus";gap:.15rem 1rem;padding:1.3rem 0}
-  .when{grid-area:when}.what{grid-area:what}.kind{grid-area:kind}.plus{grid-area:plus;align-self:start;margin-top:.4rem}
-  .rb-in{padding-left:0}
-  .wbar nav ul{gap:14px;font-size:.8rem}
-}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{animation:none!important;transition:none!important}
+@media(max-width:560px){
+  .navrow nav ul{gap:12px;font-size:.8rem}
+  .entry-head time{order:3;width:100%}
 }
 </style>
 </head>
 <body>
 
-<!-- ═════════ HERO ═════════ -->
-<header class="hero" id="top">
-  <div class="stage">
-
-    <div class="sheet"></div>
-
-    <div class="snav">
-      <a class="logo" href="#top" aria-label="Back to top">
-        <svg class="eye" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
-      </a>
-      <nav aria-label="Main">
-        <ul>
-          <li><a href="#work" data-filter="projects">Projects</a></li>
-          <li><a href="#work" data-filter="experience">Experience</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <!-- headline, ink layer -->
-    <h1 class="hl" aria-label="Hello, I'm Tu">
-      <span class="a" aria-hidden="true">hello</span>
-      <span class="b" aria-hidden="true">I’m Tu</span>
-    </h1>
-
-    <!-- portrait; the headline is repeated inside it in a second colour -->
-    <div class="ph">
-      <svg viewBox="0 0 100 128" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34393b"/><stop offset="1" stop-color="#0e1011"/></linearGradient>
-        </defs>
-        <rect width="100" height="128" fill="url(#g)"/>
-        <circle cx="50" cy="52" r="19" fill="#565b5d"/>
-        <path d="M8 128c0-30 18-46 42-46s42 16 42 46z" fill="#565b5d"/>
-      </svg>
-      <img class="pic" id="photoHero" alt="Portrait of Nguyen Dinh Tu" hidden>
-      <div class="hl" aria-hidden="true">
-        <span class="a">hello</span>
-        <span class="b">I’m Tu</span>
-      </div>
-      <label class="addphoto">Add photo<input class="sr" id="photoInput" type="file" accept="image/*"></label>
-    </div>
-
-    <p class="bio">I’m a data analytics student in Ho Chi Minh City, focused on turning messy data into clear decisions.</p>
-
-    <div class="slinks">
-      <div>
-        <a href="https://github.com/Tusnguyen1612/Stock-Portfolio-Market-Analytics-Project" target="_blank" rel="noopener">GitHub</a>
-        <a href="tel:+84377601612">Phone</a>
-      </div>
-      <a class="mail" href="mailto:tunguyendinh1620@gmail.com">tunguyendinh1620@gmail.com</a>
-    </div>
-
-    <div class="brand" aria-hidden="true">
-      <svg class="eye" viewBox="0 0 24 24"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
-      <span>nguyen dinh tu</span>
-    </div>
-    <p class="tag">Databases, dashboards and econometrics.<br>Numbers in, decisions out.</p>
-
-    <!-- peek of the next page -->
-    <div class="dark" data-go="work" aria-hidden="true">
-      <div class="dtop">
-        <span class="av"><span class="mono">NT</span><img class="pic2" alt="" hidden></span>
-        <div class="dnav"><span>Projects ←</span><span>Experience</span><span>About</span></div>
-      </div>
-      <div class="dhead">Some of my work</div>
-      <div class="dfilters"><span>All</span><span>Projects</span><span>Experience</span><span>Volunteer</span></div>
-    </div>
-
-  </div>
-</header>
-
-<!-- ═════════ WORK ═════════ -->
-<main>
-<section class="work" id="work" aria-labelledby="work-h">
-  <div class="wbar">
-    <span class="av"><span class="mono">NT</span><img class="pic2" alt="" hidden></span>
+<header class="site" id="top">
+  <div class="navrow">
+    <span class="name">Nguyen Dinh Tu</span>
     <nav aria-label="Sections">
       <ul>
-        <li><a href="#work" data-filter="projects">Projects</a></li>
-        <li><a href="#work" data-filter="experience">Experience</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
+</header>
 
-  <h2 class="big" id="work-h">Some of my work</h2>
-
-  <div class="filters" role="group" aria-label="Filter work">
-    <button type="button" data-f="all" aria-pressed="true">All</button>
-    <button type="button" data-f="projects" aria-pressed="false">Projects</button>
-    <button type="button" data-f="experience" aria-pressed="false">Experience</button>
-    <button type="button" data-f="volunteer" aria-pressed="false">Volunteer</button>
-  </div>
-
-  <ul class="rows">
-
-    <li class="row" data-cat="projects">
-      <button class="rh" type="button" aria-expanded="false" aria-controls="r1">
-        <span class="when">Feb 2026 – May 2026</span>
-        <span class="what">Stock Portfolio &amp; Market Analytics Database</span>
-        <span class="kind">PostgreSQL</span>
-        <span class="plus" aria-hidden="true"></span>
-      </button>
-      <div class="rb" id="r1"><div><div class="rb-in">
-        <ul>
-          <li>Designed a normalized relational database (3NF) with 9 interconnected tables for stocks, investors, portfolios, trades, holdings, market prices, and dividends, using keys and integrity constraints to ensure data consistency.</li>
-          <li>Developed PostgreSQL functions, triggers, and views to automate portfolio updates, calculate ROI and market value, and generate stock and portfolio performance insights.</li>
-          <li>Improved query efficiency with indexes on frequently searched and joined fields, evaluated via EXPLAIN ANALYZE, and integrated the database with a Streamlit front-end for visualization.</li>
-        </ul>
-        <div class="chips"><span>PostgreSQL</span><span>Streamlit</span><span>3NF design</span></div>
-        <a class="ext" href="https://github.com/Tusnguyen1612/Stock-Portfolio-Market-Analytics-Project" target="_blank" rel="noopener">View on GitHub</a>
-      </div></div></div>
-    </li>
-
-    <li class="row" data-cat="projects">
-      <button class="rh" type="button" aria-expanded="false" aria-controls="r2">
-        <span class="when">Mar 2026 – May 2026</span>
-        <span class="what">Impact of Urbanization on Poverty in Vietnam</span>
-        <span class="kind">Stata, VHLSS, VIIRS</span>
-        <span class="plus" aria-hidden="true"></span>
-      </button>
-      <div class="rb" id="r2"><div><div class="rb-in">
-        <ul>
-          <li>Analyzed the relationship between urbanization and poverty using a balanced panel of 5,685 households from VHLSS 2012, 2014, and 2016, combined with district-level VIIRS nighttime light data as an objective proxy for urbanization.</li>
-          <li>Constructed Foster-Greer-Thorbecke (FGT) poverty measures (P0, P1, P2) and key household and district controls, then estimated fixed-effects models using Stata’s reghdfe with district, household, and province-year fixed effects.</li>
-          <li>Evaluated linear and non-linear urbanization effects through squared nightlight terms, marginal effects, and predictive margins. Found an inverted-U relationship with poverty depth (P1) at the household level, and no statistically significant effect across poverty measures at the district level.</li>
-        </ul>
-        <div class="chips"><span>Stata</span><span>reghdfe</span><span>Panel data</span><span>FGT poverty measures</span></div>
-      </div></div></div>
-    </li>
-
-    <li class="row" data-cat="projects">
-      <button class="rh" type="button" aria-expanded="false" aria-controls="r3">
-        <span class="when">Mar 2026 – Apr 2026</span>
-        <span class="what">REE Corporation Financial Dashboard</span>
-        <span class="kind">Power BI</span>
-        <span class="plus" aria-hidden="true"></span>
-      </button>
-      <div class="rb" id="r3"><div><div class="rb-in">
-        <ul>
-          <li>Developed an interactive Power BI dashboard analyzing REE Corporation’s performance from 2006 to 2025 across 5 KPIs: Net Profit, Net Revenue, Total Assets, Debt-to-Equity Ratio, and Profit Margin.</li>
-          <li>Created 6 visualizations (line and clustered column, line, area, clustered bar, donut, and clustered column charts) to analyze revenue, profitability, asset efficiency, capital structure, and cost structure.</li>
-          <li>Built DAX measures and an interactive Year slicer to calculate financial ratios and year-over-year changes, including Asset Turnover, Profit Margin, and Debt-to-Equity Ratio.</li>
-        </ul>
-        <div class="chips"><span>Power BI</span><span>DAX</span><span>Financial ratios</span></div>
-      </div></div></div>
-    </li>
-
-    <li class="row" data-cat="experience">
-      <button class="rh" type="button" aria-expanded="false" aria-controls="r4">
-        <span class="when">Jul 2026 – Oct 2026</span>
-        <span class="what">Credit Intern, Vietcombank (Ky Dong Branch)</span>
-        <span class="kind">Banking</span>
-        <span class="plus" aria-hidden="true"></span>
-      </button>
-      <div class="rb" id="r4"><div><div class="rb-in">
-        <ul>
-          <li>Collected, verified, and entered business and financial data from client documents and external sources, and researched further to identify and complete missing information.</li>
-          <li>Prepared and organized data for internal documentation and client-facing materials, supporting the development of SME financial proposals by compiling relevant banking products, services, and preferential policies.</li>
-          <li>Assisted with customer documentation and other data-processing tasks to support the credit team’s daily operations.</li>
-        </ul>
-      </div></div></div>
-    </li>
-
-    <li class="row" data-cat="experience">
-      <button class="rh" type="button" aria-expanded="false" aria-controls="r5">
-        <span class="when">Sep 2024 – May 2026</span>
-        <span class="what">University Teaching Assistant &amp; Tutor, International University (VNU-HCM)</span>
-        <span class="kind">365+ students taught</span>
-        <span class="plus" aria-hidden="true"></span>
-      </button>
-      <div class="rb" id="r5"><div><div class="rb-in">
-        <ul>
-          <li>Served as departmental peer tutor for Microeconomics and Business Mathematics, giving one-on-one and whole-class support by clarifying course concepts and reviewing weekly materials.</li>
-          <li>Tutored 5 students online in Macroeconomics, delivering weekly lessons, preparing practice exercises, and giving personalized feedback to prepare them for midterm and final examinations.</li>
-          <li>Served as Teaching Assistant for Statistics for Business, Econometrics, and Introduction to Microeconomics (1, 2, and 7 classes respectively; 365+ students in total): designed weekly quizzes, led midterm and final review sessions, graded exams and assignments, and managed online course groups for announcements and support outside class hours.</li>
-        </ul>
-        <div class="chips"><span>Statistics</span><span>Econometrics</span><span>Microeconomics</span><span>Macroeconomics</span></div>
-      </div></div></div>
-    </li>
-
-    <li class="row" data-cat="volunteer">
-      <button class="rh" type="button" aria-expanded="false" aria-controls="r6">
-        <span class="when">Jan 2026</span>
-        <span class="what">Volunteer, Xuan Tinh Nguyen Campaign (Tan Nhut Commune)</span>
-        <span class="kind">Community</span>
-        <span class="plus" aria-hidden="true"></span>
-      </button>
-      <div class="rb" id="r6"><div><div class="rb-in">
-        <ul>
-          <li>Took part in a 4-day Spring Volunteer program: made Banh Tet, built a traditional Tet bamboo gate, visited 10 war veterans and national contributors, painted an anti-drug awareness mural, and designed and ran traditional Tet games for primary school children.</li>
-        </ul>
-      </div></div></div>
-    </li>
-
-  </ul>
-</section>
-
-<!-- ═════════ ABOUT ═════════ -->
-<section class="about" id="about" aria-labelledby="about-h">
-  <h2 class="sr" id="about-h">About</h2>
-  <p class="lead">I’m studying Economics with Data Analytics at International University (VNU-HCM), and I like work where messy data ends in a clear answer. Outside my own projects, I teach statistics, econometrics and microeconomics to more than 365 students.</p>
-
-  <div class="facts">
-    <div>
-      <h3>Education</h3>
-      <p>Bachelor of Economics with Data Analytics</p>
-      <p class="sub">International University (VNU-HCM)<br>Sep 2023 – Sep 2027</p>
-      <p class="sub" style="margin-top:.6rem">GPA 3.38 / 4.0<br>Partial Entrance Scholarship</p>
+<main>
+  <section class="hero wrap" style="border-top:0">
+    <h1>Economics and data analytics, applied to real banking, research and business problems.</h1>
+    <p class="role">Data Analytics student at International University (VNU-HCM), currently a Credit Intern at Vietcombank. I build databases, dashboards and econometric models, then use them to get real work done.</p>
+    <div class="contact-row">
+      <a href="mailto:tunguyendinh1620@gmail.com">tunguyendinh1620@gmail.com</a>
+      <a href="tel:+84377601612">(+84) 377 601 612</a>
+      <a href="https://tusnguyen1612.github.io/" target="_blank" rel="noopener">tusnguyen1612.github.io</a>
     </div>
-    <div>
-      <h3>Coursework</h3>
+
+    <div class="stats">
+      <div><div class="n">₫962M</div><div class="l">Payment schedule processed for a single client at Vietcombank</div></div>
+      <div><div class="n">~50×</div><div class="l">Faster trade queries after indexing, tested at 1M rows</div></div>
+      <div><div class="n">365+</div><div class="l">Students taught as TA across 3 courses</div></div>
+      <div><div class="n">1,895</div><div class="l">Households tracked in my urbanization &amp; poverty panel</div></div>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap">
+    <p class="eyebrow">Experience</p>
+    <h2>Where I've worked</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Credit Intern <span class="org">— Vietcombank, Ky Dong Branch</span></h3>
+        <time>Jul 2026 – Oct 2026</time>
+      </div>
       <ul>
-        <li>Statistics for Business</li>
-        <li>Fundamentals of Programming</li>
-        <li>Intermediate Micro &amp; Macroeconomics</li>
-        <li>Introductory Econometrics</li>
-        <li>Time Series Econometrics</li>
-        <li>Database Management</li>
-        <li>Data Visualization</li>
-        <li>Machine Learning</li>
+        <li>Automated tax-code lookup with Python (Selenium) on masothue.com for a client's 56-order, roughly VND 962M payment schedule: retrieved all 45 company and business-household codes and completed the remaining 11 individual payers from payment references, filling all 56 of 56.</li>
+        <li>Built a bilingual (VN/EN) fee proposal for a corporate client, updating 17 fee lines to Vietcombank's July 2026 schedules over 3 revisions, and designed 2 client offer decks: a 10-slide SME package deck and a 1-slide home-loan promotion, from colleagues' content.</li>
+        <li>Prepared credit and legal documents from colleagues' files, researching online to fill gaps: 4 Form 01A customer appendices, a 64-field credit-contract sheet covering 3 collateral assets, and 4 developer-partnership loan agreements of about 25 pages each.</li>
       </ul>
     </div>
-    <div>
-      <h3>Technical skills</h3>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>University Teaching Assistant &amp; Tutor <span class="org">— International University (VNU-HCM)</span></h3>
+        <time>Sep 2024 – May 2026</time>
+      </div>
       <ul>
-        <li>Python: Pandas, NumPy, SciPy, Matplotlib, scikit-learn</li>
-        <li>Stata</li>
-        <li>PostgreSQL</li>
-        <li>Power BI</li>
-        <li>Microsoft Office: Word, Excel, PowerPoint</li>
+        <li>Served as departmental peer tutor for Microeconomics and Business Mathematics, providing one-on-one and whole-class academic support by clarifying course concepts and reviewing weekly materials.</li>
+        <li>Tutored 5 students online in Macroeconomics, delivering weekly lessons, preparing practice exercises, and giving personalized feedback ahead of midterms and finals.</li>
+        <li>Served as Teaching Assistant for Statistics for Business, Econometrics, and Introduction to Microeconomics (1, 2 and 7 classes respectively, reaching 365+ students total): designed weekly quizzes, led midterm and final review sessions, graded exams and assignments, and ran online course groups for announcements and support outside class hours.</li>
       </ul>
     </div>
-    <div>
-      <h3>Languages</h3>
+  </section>
+
+  <section id="projects" class="wrap">
+    <p class="eyebrow">Projects</p>
+    <h2>What I've built</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Stock Portfolio &amp; Market Analytics Database</h3>
+        <time>Feb 2026 – May 2026</time>
+      </div>
+      <div class="tools">PostgreSQL · Streamlit</div>
       <ul>
-        <li>Vietnamese, native</li>
-        <li>English, IELTS 6.5</li>
+        <li>Designed a normalized (3NF) database with 9 tables, 9 foreign keys and 19 CHECK constraints, loaded with 300 real Stooq price records for 10 Hungarian stocks and 80 simulated trades across 30 portfolios.</li>
+        <li>Built 2 analytical functions for ROI and portfolio value, an AFTER INSERT trigger that keeps holdings in sync and rejects oversold trades, plus 2 views and 1 materialized view.</li>
+        <li>Indexed frequently searched and joined columns; in a 1M-row scaled test, EXPLAIN ANALYZE showed trade-by-date queries fall from about 99 ms with a sequential scan to about 2 ms with an index scan, roughly 50 times faster. Integrated a Streamlit front-end.</li>
       </ul>
+      <a class="repo" href="https://github.com/Tusnguyen1612/Stock-Portfolio-Market-Analytics-Project" target="_blank" rel="noopener">github.com/Tusnguyen1612/Stock-Portfolio-Market-Analytics-Project</a>
     </div>
-  </div>
-</section>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>Impact of Urbanization on Poverty in Vietnam</h3>
+        <time>Mar 2026 – May 2026</time>
+      </div>
+      <div class="tools">Stata · VHLSS · VIIRS</div>
+      <ul>
+        <li>Built a balanced panel of 1,895 households (5,685 observations) from VHLSS 2012, 2014 and 2016, merged with district-level VIIRS nighttime-light data covering 562 districts and 63 provinces in the regression sample, as an objective proxy for urbanization.</li>
+        <li>Constructed Foster-Greer-Thorbecke (FGT) poverty measures (P0, P1, P2) against GSO-World Bank poverty lines, and estimated fixed-effects models with Stata's <code>reghdfe</code>, using district, household and province-year fixed effects with clustered standard errors.</li>
+        <li>Tested non-linearity through squared nightlight terms and predictive margins: found an inverted-U relationship with poverty depth (P1) at the household level, significant at 5% between districts, with a turning point around 53–59 nW/cm²/sr within the 0–76.8 sample range, but no significant district-level effect across 678 districts and 2,034 observations. Each extra year of schooling was linked to 1.7–2.3 percentage points lower poverty incidence.</li>
+      </ul>
+      <a class="repo" href="https://github.com/Tusnguyen1612/Urbanization-Poverty-Vietnam" target="_blank" rel="noopener">github.com/Tusnguyen1612/Urbanization-Poverty-Vietnam</a>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <h3>REE Corporation Financial Dashboard</h3>
+        <time>Mar 2026 – Apr 2026</time>
+      </div>
+      <div class="tools">Power BI · DAX</div>
+      <ul>
+        <li>Developed an interactive Power BI dashboard analyzing REE Corporation's performance from 2006 to 2025 across 5 KPIs: Net Profit, Net Revenue, Total Assets, Debt-to-Equity Ratio, and Profit Margin.</li>
+        <li>Created 6 visualizations (line and clustered column, line, area, clustered bar, donut, and clustered column charts) to analyze revenue, profitability, asset efficiency, capital structure, and cost structure.</li>
+        <li>Built DAX measures and an interactive Year slicer to calculate financial ratios and year-over-year changes, including Asset Turnover, Profit Margin, and Debt-to-Equity Ratio.</li>
+      </ul>
+      <a class="repo" href="https://github.com/Tusnguyen1612/REE-Financial-Performance-Analysis" target="_blank" rel="noopener">github.com/Tusnguyen1612/REE-Financial-Performance-Analysis</a>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <p class="eyebrow">Background</p>
+    <h2>Skills &amp; education</h2>
+    <div class="grid2">
+      <div>
+        <h3>Education</h3>
+        <p>Bachelor of Economics with Data Analytics</p>
+        <p style="color:var(--mute)">International University (VNU-HCM)<br>Sep 2023 – Sep 2027</p>
+        <p style="color:var(--mute);margin-top:.5rem">GPA 3.38 / 4.0 · Partial Entrance Scholarship</p>
+      </div>
+      <div>
+        <h3>Technical skills</h3>
+        <ul>
+          <li>Python: Pandas, NumPy, SciPy, Matplotlib, scikit-learn</li>
+          <li>Stata</li>
+          <li>PostgreSQL</li>
+          <li>Power BI</li>
+          <li>Microsoft Office: Word, Excel, PowerPoint</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Languages</h3>
+        <ul>
+          <li>Vietnamese — native</li>
+          <li>English — IELTS 6.5</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Volunteering</h3>
+        <p><strong>Xuan Tinh Nguyen Campaign</strong>, Tan Nhut Commune — Jan 2026</p>
+        <p style="color:var(--mute);margin-top:.4rem">A 4-day Spring Volunteer program: Banh Tet making, building a traditional Tet bamboo gate, visits to 10 war veterans and national contributors, an anti-drug awareness mural, and Tet games designed for primary school children.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- ═════════ CONTACT ═════════ -->
-<footer class="contact" id="contact">
-  <h2>Let’s talk.</h2>
-  <a class="mailbig" href="mailto:tunguyendinh1620@gmail.com">tunguyendinh1620@gmail.com</a>
+<footer class="site wrap" id="contact">
+  <h2>Let's talk.</h2>
+  <p style="color:var(--mute);max-width:32em;margin-top:.6rem">Open to internships and analyst roles in banking, data and economics research.</p>
   <div class="reach">
+    <a href="mailto:tunguyendinh1620@gmail.com">tunguyendinh1620@gmail.com</a>
     <a href="tel:+84377601612">(+84) 377 601 612</a>
-    <span>Ho Chi Minh City, Vietnam</span>
-    <a href="https://github.com/Tusnguyen1612/Stock-Portfolio-Market-Analytics-Project" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://tusnguyen1612.github.io/" target="_blank" rel="noopener">tusnguyen1612.github.io</a>
   </div>
-  <div class="foot">
-    <a href="#top">
-      <svg class="eye" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
-      Back to top
-    </a>
+  <div class="foot-bottom">
     <span>© 2026 Nguyen Dinh Tu</span>
+    <a href="#top">Back to top ↑</a>
   </div>
 </footer>
 
-<script>
-(function(){
-  var rows = Array.prototype.slice.call(document.querySelectorAll('.row'));
-  var fbtns = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function closeRow(r){
-    r.classList.remove('open');
-    var h = r.querySelector('.rh');
-    if(h) h.setAttribute('aria-expanded','false');
-  }
-  function setFilter(f){
-    fbtns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.f === f)); });
-    rows.forEach(function(r){
-      var show = f === 'all' || r.dataset.cat === f;
-      r.hidden = !show;
-      if(!show) closeRow(r);
-    });
-  }
-  function goWork(){
-    document.getElementById('work').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
-  }
-
-  fbtns.forEach(function(b){ b.addEventListener('click', function(){ setFilter(b.dataset.f); }); });
-
-  rows.forEach(function(r){
-    var h = r.querySelector('.rh');
-    h.addEventListener('click', function(){
-      var open = r.classList.contains('open');
-      rows.forEach(closeRow);
-      if(!open){ r.classList.add('open'); h.setAttribute('aria-expanded','true'); }
-    });
-  });
-
-  Array.prototype.forEach.call(document.querySelectorAll('[data-filter]'), function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      setFilter(a.dataset.filter);
-      goWork();
-    });
-  });
-
-  var peek = document.querySelector('[data-go="work"]');
-  if(peek) peek.addEventListener('click', function(){ setFilter('all'); goWork(); });
-
-  /* Portrait: pick a photo from your device to preview it here */
-  var input = document.getElementById('photoInput');
-  var hero = document.getElementById('photoHero');
-  input.addEventListener('change', function(){
-    var file = input.files && input.files[0];
-    if(!file) return;
-    var reader = new FileReader();
-    reader.onload = function(){
-      try{
-        hero.src = reader.result;
-        hero.hidden = false;
-        Array.prototype.forEach.call(document.querySelectorAll('.pic2'), function(img){
-          img.src = reader.result; img.hidden = false;
-        });
-        Array.prototype.forEach.call(document.querySelectorAll('.mono'), function(m){ m.style.display = 'none'; });
-      }catch(err){ console.error(err); }
-    };
-    reader.readAsDataURL(file);
-  });
-})();
-</script>
 </body>
 </html>
